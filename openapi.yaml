@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: Student Enrollment API
+  version: 1.0.0
+  description: API for managing student enrollment
+
+servers:
+  - url: https://example.com
+
+paths:
+  /students:
+    post:
+      summary: Create a student
+      operationId: createStudent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Student"
+      responses:
+        "201":
+          description: Student created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+
+components:
+  schemas:
+    Student:
+      type: object
+      required:
+        - studentId
+        - name
+      properties:
+        studentId:
+          type: string
+          example: "S123456"
+        name:
+          type: string
+          example: "Ken"
